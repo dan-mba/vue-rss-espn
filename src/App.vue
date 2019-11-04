@@ -1,5 +1,17 @@
 <template>
   <div id="app">
+    <div class="selectBox">
+      <select v-model="selected">
+        <option value="afcnorth">AFC North</option>
+        <option value="afcsouth">AFC South</option>
+        <option value="afceast">AFC East</option>
+        <option value="afcwest">AFC West</option>
+        <option value="nfcnorth">NFC North</option>
+        <option value="nfcsouth">NFC South</option>
+        <option value="nfceast">NFC East</option>
+        <option value="nfcwest">NFC West</option>
+      </select>
+    </div>
     <div v-if="!loaded">
       <div>Loading</div>
       <div class="lds-facebook"><div></div><div></div><div></div></div>
@@ -24,30 +36,41 @@ export default {
   name: 'app',
   data () {
     return {
+      selected: "afcsouth",
       items: null,
       loaded: false
     }
   },
-  components : {Item},
-  mounted () {
+  components: {Item},
+  watch: {
+    selected: function () {
+      this.getData();
+    }
+  },
+  methods: {
     /*
       Call back-end to transform XML RSS feed to JSON & bypass CORS restrictions.
     */
-    axios
-      .get('https://flannel-glade.glitch.me', {
-        params: {
-          rss: 'http://www.espn.com/blog/feed?blog=afcsouth'
-        }
-      })
-      .then(response => {
-        this.items = response.data.rss.channel.item;
-        this.loaded = true;
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    getData: function () {
+      axios
+        .get('https://flannel-glade.glitch.me', {
+          params: {
+            rss: 'http://www.espn.com/blog/feed?blog=' + this.selected
+          }
+        })
+        .then(response => {
+          this.items = response.data.rss.channel.item;
+          this.loaded = true;
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  },
+  mounted () {
+    this.getData();
   }
- }
+}
 </script>
 
 <style>
@@ -60,6 +83,14 @@ export default {
   margin: 0 auto;
   padding: 2% 0;
   max-width: 800px;
+}
+
+.selectBox {
+  margin: 0 0 2%;
+}
+
+select {
+  font-size: 1.1em;
 }
 
 /* loading animation from loading.io */
