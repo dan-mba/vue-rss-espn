@@ -1,4 +1,9 @@
-# my-vue-app
+# vue-rss-espn
+
+## Project overview
+I built this project to learn Vue development.<br/>
+It accesses the ESPN NFL RSS feeds using a proxy 
+to translate xml to json.
 
 ## Project setup
 ```
@@ -13,11 +18,6 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Run your tests
-```
-npm run test
 ```
 
 ### Lints and fixes files
