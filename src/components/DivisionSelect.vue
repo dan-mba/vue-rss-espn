@@ -1,7 +1,7 @@
 <template>
   <div class="select-box">
     <span class="select-label">Select Division:</span>
-    <select :value="value" @input="$emit('input',$event.target.value)">
+    <select :value="modelValue" @input="$emit('update:modelValue',$event.target.value)">
       <option value="afcnorth">AFC North</option>
       <option value="afcsouth">AFC South</option>
       <option value="afceast">AFC East</option>
@@ -18,7 +18,7 @@
 export default {
   name: 'DivisionSelect',
   props: {
-    value: String,
+    modelValue: String,
   },
 }
 </script>
