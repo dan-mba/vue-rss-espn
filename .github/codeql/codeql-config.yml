@@ -1,0 +1,4 @@
+name: "My CodeQL Config"
+
+paths-ignore:
+  - 'docs/**'
