@@ -15,11 +15,17 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2.1.5
       with:
-        node-version: '12.x'
+        node-version: '14.x'
+
+    - name: Update NPM
+      run: |
+        npm i -g npm@latest
+
     - name: Build 
       run: |
         npm ci
         npm run build
+
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
