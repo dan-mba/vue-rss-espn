@@ -15,51 +15,35 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import {ref, watch, onMounted} from 'vue'
 import Item from './components/Item.vue'
 import DivisionSelect from './components/DivisionSelect.vue'
 import Loading from './components/Loading.vue'
 import axios from 'axios'
 
-export default {
-  name: 'app',
-  data () {
-    return {
-      selected: "afcsouth",
-      items: null,
-      loaded: false
-    }
-  },
-  components: {Item, DivisionSelect, Loading},
-  watch: {
-    selected: function () {
-      this.getData();
-    }
-  },
-  methods: {
-    /*
-      Call back-end to transform XML RSS feed to JSON & bypass CORS restrictions.
-    */
-    getData: function () {
-      axios
-        .get('https://flannel-glade.glitch.me', {
-          params: {
-            rss: 'http://www.espn.com/blog/feed?blog=' + this.selected
-          }
-        })
-        .then(response => {
-          this.items = response.data.rss.channel.item;
-          this.loaded = true;
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    }
-  },
-  mounted () {
-    this.getData();
-  }
+const selected = ref('afcsouth');
+const items = ref(null);
+const loaded = ref(false);
+
+function getData() {
+  axios
+    .get('https://flannel-glade.glitch.me', {
+      params: {
+        rss: 'http://www.espn.com/blog/feed?blog=' + selected.value
+      }
+    })
+    .then(response => {
+      items.value = response.data.rss.channel.item;
+      loaded.value = true;
+    })
+    .catch(error => {
+      console.log(error)
+    })
 }
+
+watch(selected, () => getData());
+onMounted(() => getData());
 </script>
 
 <style>

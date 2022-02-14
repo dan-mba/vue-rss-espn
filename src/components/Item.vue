@@ -10,16 +10,13 @@
   </div>
  </template>
 
-<script>
-export default {
-  name: 'Item',
-  props: {
-    link: String,
-    title: String,
-    image: String,
-    desc: String
-  }
-}
+<script setup>
+const props = defineProps({
+  link: String,
+  title: String,
+  image: String,
+  desc: String
+});
 </script>
 
 <style scoped>
