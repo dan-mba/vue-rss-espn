@@ -11,7 +11,10 @@ export default defineConfig({
     port: 8080
   },
   build: {
-    outDir: 'docs'
+    outDir: 'docs',
+    rollupOptions: {
+      input: '/index.html',
+    },
   },
   base: './'
 });
