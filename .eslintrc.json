@@ -3,11 +3,12 @@
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "vue/setup-compiler-macros": true
     },
     "extends": [
         "eslint:recommended",
-        "plugin:vue/essential"
+        "plugin:vue/vue3-essential"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -19,9 +20,11 @@
     },
     "plugins": [
         "vue"
-     ],
+    ],
     "rules": {
-        "no-console": "off"
+      "no-console": "off",
+      "no-prototype-builtins": "off",
+      "vue/multi-word-component-names": "off"
     },
     "ignorePatterns": "docs/**"
 }

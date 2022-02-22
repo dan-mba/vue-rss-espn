@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-const props = defineProps({modelValue: String});
+defineProps({modelValue: String});
 </script>
 
 <style>

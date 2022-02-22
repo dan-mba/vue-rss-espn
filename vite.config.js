@@ -13,5 +13,8 @@ export default defineConfig({
   build: {
     outDir: 'docs'
   },
-  base: './'
+  base: './',
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+  }
 });

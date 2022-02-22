@@ -11,7 +11,7 @@
  </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   link: String,
   title: String,
   image: String,

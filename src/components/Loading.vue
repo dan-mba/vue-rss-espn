@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-const props = defineProps({loaded: Boolean});
+defineProps({loaded: Boolean});
 </script>
 
 <style>
