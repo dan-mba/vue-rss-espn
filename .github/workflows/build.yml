@@ -15,11 +15,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '14.x'
-
-    - name: Update NPM
-      run: |
-        npm i -g npm@latest
+        node-version: '16'
 
     - name: Build 
       run: |
