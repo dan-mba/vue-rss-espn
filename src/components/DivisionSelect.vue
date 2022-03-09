@@ -14,13 +14,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'DivisionSelect',
-  props: {
-    modelValue: String,
-  },
-}
+<script setup>
+defineProps({modelValue: String});
 </script>
 
 <style>

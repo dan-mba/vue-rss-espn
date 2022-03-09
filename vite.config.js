@@ -16,5 +16,8 @@ export default defineConfig({
       input: '/index.html',
     },
   },
-  base: './'
+  base: './',
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+  }
 });

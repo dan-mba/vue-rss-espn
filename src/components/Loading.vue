@@ -5,13 +5,8 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Loading',
-  props: {
-    loaded: Boolean,
-  }
-}
+<script setup>
+defineProps({loaded: Boolean});
 </script>
 
 <style>
