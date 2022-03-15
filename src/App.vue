@@ -20,21 +20,19 @@ import {ref, watch, onMounted} from 'vue'
 import Item from './components/Item.vue'
 import DivisionSelect from './components/DivisionSelect.vue'
 import Loading from './components/Loading.vue'
-import axios from 'axios'
+
 
 const selected = ref('afcsouth');
 const items = ref(null);
 const loaded = ref(false);
 
 function getData() {
-  axios
-    .get('https://flannel-glade.glitch.me', {
-      params: {
-        rss: 'http://www.espn.com/blog/feed?blog=' + selected.value
-      }
-    })
+  fetch('https://flannel-glade.glitch.me/?' + new URLSearchParams({
+    rss: 'http://www.espn.com/blog/feed?blog=' + selected.value
+  }).toString())
+    .then(response => response.json())
     .then(response => {
-      items.value = response.data.rss.channel.item;
+      items.value = response.rss.channel.item;
       loaded.value = true;
     })
     .catch(error => {
