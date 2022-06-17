@@ -8,7 +8,7 @@
       :key="index"
       :title="item.title"
       :link="item.link"
-      :image="item.image"
+      :image="item.enclosure['$'].url"
       :desc="item.description"
     >
     </Item>
