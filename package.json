@@ -16,7 +16,7 @@
     "autoprefixer": "^10.4.7",
     "eslint": "^8.19.0",
     "eslint-plugin-vue": "^9.1.1",
-    "vite": "^2.9.13",
+    "vite": "^2.9.14",
     "vite-plugin-html": "^3.2.0"
   },
   "postcss": {
