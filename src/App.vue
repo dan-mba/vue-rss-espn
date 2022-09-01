@@ -9,7 +9,7 @@
       :key="index"
       :title="item.title"
       :link="item.link"
-      :image="item.enclosure['$'].url"
+      :image="item.url"
       :desc="item.description"
     >
     </Item>
@@ -31,6 +31,13 @@ const updating = ref(false);
 async function getData() {
   const rss = localStorage.getItem(`espn-nfl-rss-${selected.value}`);
   if (rss) {
+    let data = JSON.parse(rss);
+    if (!data[0].url) {
+      data = rss.map((story) => {
+        const url = story.enclosure?.['$']?.url;
+        return {...story, url};
+      });
+    }
     items.value = JSON.parse(rss);
     loaded.value = true;
     updating.value = true;
@@ -41,7 +48,11 @@ async function getData() {
       rss: 'http://www.espn.com/blog/feed?blog=' + selected.value
     }).toString())
     const json = await data.json();
-    items.value = json.rss.channel.item;
+    const rss = json.rss.channel.item;
+    items.value = rss.map((story) => {
+      const url = story.enclosure?.['$']?.url;
+      return {...story, url};
+    });
     localStorage.setItem(`espn-nfl-rss-${selected.value}`, JSON.stringify(items.value));
     loaded.value = true;
     updating.value = false;
