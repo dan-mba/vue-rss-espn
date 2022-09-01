@@ -33,12 +33,13 @@ async function getData() {
   if (rss) {
     let data = JSON.parse(rss);
     if (!data[0].url) {
-      data = rss.map((story) => {
+      data = data.map((story) => {
         const url = story.enclosure?.['$']?.url;
         return {...story, url};
       });
+      localStorage.setItem(`espn-nfl-rss-${selected.value}`, JSON.stringify(data));
     }
-    items.value = JSON.parse(rss);
+    items.value = data;
     loaded.value = true;
     updating.value = true;
   }
