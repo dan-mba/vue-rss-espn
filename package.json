@@ -14,7 +14,7 @@
     "@vitejs/plugin-vue": "^2.3.4",
     "@vue/compiler-sfc": "^3.2.41",
     "autoprefixer": "^10.4.12",
-    "eslint": "^8.25.0",
+    "eslint": "^8.26.0",
     "eslint-plugin-vue": "^9.6.0",
     "vite": "^2.9.14",
     "vite-plugin-html": "^3.2.0"
