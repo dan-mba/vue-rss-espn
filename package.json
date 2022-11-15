@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.4",
-    "@vue/compiler-sfc": "^3.2.41",
+    "@vue/compiler-sfc": "^3.2.45",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.27.0",
     "eslint-plugin-vue": "^9.7.0",
