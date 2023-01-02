@@ -10,9 +10,6 @@ export default defineConfig({
   server: {
     port: 8080
   },
-  build: {
-    outDir: 'docs',
-  },
   base: './',
   resolve: {
     extensions: ['.js', '.vue', '.json'],

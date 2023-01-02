@@ -1,34 +1,59 @@
-name: Build
+name: Deploy content to Pages
 
 on:
-  workflow_dispatch:
   push:
-    branches: [ master ]
+    branches: ["main"]
     paths-ignore:
       - ".github/**"
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
+  # Single deploy job since we're just deploying
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Build 
-      run: |
-        npm ci
-        npm run build
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+          cache: "npm"
 
-    - name: Commit files
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add -A docs
-        git diff-index --quiet --cached HEAD || git commit -m "Build Action"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Build 
+        run: |
+          npm ci
+          npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './dist'
+
+
+# Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
