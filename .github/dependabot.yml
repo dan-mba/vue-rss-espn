@@ -8,6 +8,11 @@ updates:
     schedule:
       interval: "weekly"
       day: "tuesday"
+    groups:
+      vue-deps:
+        patterns:
+          - "vue*"
+          - "@vue*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
