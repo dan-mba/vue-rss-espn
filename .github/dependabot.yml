@@ -12,7 +12,7 @@ updates:
       vue-deps:
         patterns:
           - "vue*"
-          - "@vue*"
+          - "@vue/*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
