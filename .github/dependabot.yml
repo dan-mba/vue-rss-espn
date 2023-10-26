@@ -11,8 +11,8 @@ updates:
     groups:
       vue-deps:
         patterns:
-          - "vue*"
-          - "@vue/*"
+          - "vue"
+          - "@vue/compiler-sfc"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
