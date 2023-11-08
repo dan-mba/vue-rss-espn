@@ -8,11 +8,7 @@ updates:
     schedule:
       interval: "weekly"
       day: "tuesday"
-    groups:
-      vue-deps:
-        patterns:
-          - "vue"
-          - "@vue/compiler-sfc"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
