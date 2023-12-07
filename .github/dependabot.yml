@@ -8,6 +8,10 @@ updates:
     schedule:
       interval: "weekly"
       day: "tuesday"
+    groups:
+      lint:
+        patterns:
+          - "eslint*
 
   - package-ecosystem: "github-actions"
     directory: "/"
