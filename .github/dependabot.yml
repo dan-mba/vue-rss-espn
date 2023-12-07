@@ -11,7 +11,7 @@ updates:
     groups:
       lint:
         patterns:
-          - "eslint*
+          - "eslint*"
 
   - package-ecosystem: "github-actions"
     directory: "/"
