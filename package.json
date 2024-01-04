@@ -9,7 +9,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "vue": "^3.4.0"
+    "vue": "^3.4.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.2",
