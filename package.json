@@ -12,10 +12,11 @@
     "vue": "^3.4.21"
   },
   "devDependencies": {
+    "@eslint/js": "^9.0.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^9.24.0",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^9.24.1",
     "vite": "^5.2.7",
     "vite-plugin-html": "^3.2.0"
   },
