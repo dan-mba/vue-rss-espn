@@ -3,7 +3,8 @@
 ## Project overview
 I built this project to learn Vue development.<br/>
 It accesses the ESPN NFL RSS feeds using a proxy 
-to translate xml to json.
+to translate xml to json.<br/>
+**This project was archived due to the deprecation of the feed**
 
 ## Project setup
 ```
