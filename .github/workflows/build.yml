@@ -1,10 +1,10 @@
 name: Deploy content to Pages
 
 on:
-  push:
-    branches: ["main"]
-    paths-ignore:
-      - ".github/**"
+  #push:
+  #  branches: ["main"]
+  #  paths-ignore:
+  #    - ".github/**"
   workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
